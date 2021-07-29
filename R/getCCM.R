@@ -119,6 +119,5 @@ getCCM <- function(Y,T1,T2,M,data = NULL,
       print(paste0('The proportion mediated for treatment 1 is', 1/estimand2, 'times larger than that for treatment 1'))
     }
   }
-
   return(out)
 }
