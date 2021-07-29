@@ -13,3 +13,5 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+URL: https://github.com/xw2510/ccmEstimator
+BugReports: https://github.com/xw2510/ccmEstimator/issues
