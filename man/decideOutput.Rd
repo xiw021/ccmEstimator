@@ -15,3 +15,6 @@ decideOutput(para.df, noInteraction = TRUE, boots = 1000, sigLevel = 0.05)
 \description{
 Decide output and calculate confidence intervals
 }
+\examples{
+
+}

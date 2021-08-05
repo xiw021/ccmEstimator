@@ -25,3 +25,6 @@ getCCM(
 \description{
 Get CCM estimands
 }
+\examples{
+
+}

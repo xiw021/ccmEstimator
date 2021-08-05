@@ -14,6 +14,8 @@
 #' @export
 #'
 #' @examples
+#'
+
 getCCM <- function(Y,T1,T2,M,data = NULL,
                    noInteraction = TRUE,sigLevel = 0.05,
                    boots = 1000, finiteSample = FALSE){
@@ -27,9 +29,9 @@ getCCM <- function(Y,T1,T2,M,data = NULL,
   }
 
   decide.output <- decideOutput(para.df,noInteraction,boots,sigLevel)
-  flag1 <- out[[1]]
-  flag2 <- out[[2]]
-  df.ci <- out[[3]]
+  flag1 <- decide.output[[1]]
+  flag2 <- decide.output[[2]]
+  df.ci <- decide.output[[3]]
 
   if (noInteraction == TRUE){
     mod1 <- lm(M ~ T1 + T2, data=para.df)
@@ -62,7 +64,14 @@ getCCM <- function(Y,T1,T2,M,data = NULL,
       estimand2 <- NA
     }
 
-    out <- list(model.list,ATE1,ATE2,ACME1,ACME2,estimand1,estimand2,df.ci)
+    out <- list(models = model.list,
+                ATE1 = unname(ATE1),
+                ATE2 = unname(ATE2),
+                ACME1 = unname(ACME1),
+                ACME2 = unname(ACME2),
+                estimand1 = unname(estimand1),
+                estimand2 = unname(estimand2),
+                confidenceIntervals = df.ci)
 
   }else{
     mod1 <- lm(M ~ T1 + T2, data=para.df)
@@ -100,24 +109,36 @@ getCCM <- function(Y,T1,T2,M,data = NULL,
     }else{
       estimand2 <- NA
     }
-    out <- list(model.list,ATE1,ATE2,ACMET1,ACMET2,estimand1,estimand2,df.ci)
+
+    out <- list(models = model.list,
+                ATE1 = unname(ATE1),
+                ATE2 = unname(ATE2),
+                ACME1 = unname(ACMET1),
+                ACME2 = unname(ACMET2),
+                estimand1 = unname(estimand1),
+                estimand2 = unname(estimand2),
+                confidenceIntervals = df.ci)
 
   }
 
   if (!is.na(estimand1)){
     if (estimand1 > 1){
-      print(paste0('The mediation effect for treatment 2 is', estimand1, 'times larger than the mediation effect for treatment 1'))
+      cat(paste0('The mediation effect for treatment 2 is ' , round(estimand1,3), ' times larger than the mediation effect for treatment 1 (with ',(1-sigLevel)*100,'% CI: [', round(out$confidenceIntervals['2.5%','estimand1.ci'],3),',',round(out$confidenceIntervals['97.5%','estimand1.ci'],3),'])\n'))
     }else{
-      print(paste0('The mediation effect for treatment 1 is', 1/estimand1, 'times larger than the mediation effect for treatment 2'))
+      cat(paste0('The mediation effect for treatment 1 is' , round(1/estimand1,3), ' times larger than the mediation effect for treatment 2 (with ',(1-sigLevel)*100,'% CI: [', round(1/out$confidenceIntervals['97.5%','estimand1.ci'],3),',',round(1/out$confidenceIntervals['2.5%','estimand1.ci'],3),'])\n'))
     }
   }
 
   if (!is.na(estimand2)){
     if (estimand2 > 1){
-      print(paste0('The proportion mediated for treatment 2 is', estimand2, 'times larger than that for treatment 1'))
+      cat(paste0('The proportion mediated for treatment 2 is ' , round(estimand2,3), ' times larger than that for treatment 1 (with ',(1-sigLevel)*100,'% CI: [', round(out$confidenceIntervals['2.5%','estimand2.ci'],3),',',round(out$confidenceIntervals['97.5%','estimand2.ci'],3),'])\n'))
     }else{
-      print(paste0('The proportion mediated for treatment 1 is', 1/estimand2, 'times larger than that for treatment 1'))
+      cat(paste0('The proportion mediated for treatment 1 is ' , round(1/estimand2,3), ' times larger than that for treatment 2 (with ',(1-sigLevel)*100,'% CI: [', round(1/out$confidenceIntervals['97.5%','estimand2.ci'],3),',',round(1/out$confidenceIntervals['2.5%','estimand2.ci'],3),'])\n'))
     }
   }
-  return(out)
+  cat('Please use summary() to ')
+  out$call <- match.call()
+  class(out) <- "ccmEstimation"
+  out
 }
+

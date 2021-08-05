@@ -10,10 +10,11 @@
 #' @export
 #'
 #' @examples
+#'
 decideOutput <- function(para.df,
                          noInteraction = TRUE,boots = 1000,sigLevel = 0.05){
   if (noInteraction == TRUE){
-    print("Causal mediation estimates assuming no interactions between treatments and mediator.")
+    cat("Causal mediation estimates assuming no interactions between treatments and mediator.\n")
     ACME1hat.vec <- c()
     ACME2hat.vec <- c()
     ATE1hat.vec <- c()

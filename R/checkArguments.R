@@ -7,10 +7,10 @@
 #' @param M
 #' @param data
 #'
-#' @import tidyverse
+#'
 #'
 #' @return A dataframe
-#' @export
+#'
 #'
 
 checkArguments <- function(Y,T1,T2,M,data = NULL){
