@@ -136,7 +136,7 @@ getCCM <- function(Y,T1,T2,M,data = NULL,
       cat(paste0('The proportion mediated for treatment 1 is ' , round(1/estimand2,3), ' times larger than that for treatment 2 (with ',(1-sigLevel)*100,'% CI: [', round(1/out$confidenceIntervals['97.5%','estimand2.ci'],3),',',round(1/out$confidenceIntervals['2.5%','estimand2.ci'],3),'])\n'))
     }
   }
-  cat('Please use summary() to ')
+  cat('Please use summary() to view the estimation results.')
   out$call <- match.call()
   class(out) <- "ccmEstimation"
   out
