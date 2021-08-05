@@ -2,16 +2,25 @@
 % Please edit documentation in R/checkInteraction.R
 \name{checkInteraction}
 \alias{checkInteraction}
-\title{A function that checks the interaction}
+\title{Check Interaction between mediator and treatments}
 \usage{
 checkInteraction(para.df, sigLevel = 0.05)
 }
 \arguments{
-\item{sigLevel}{}
+\item{para.df}{A data.frame of arguments generated using checkArguments().}
+
+\item{sigLevel}{The significance level, 0.05 by default.}
 }
 \value{
-a logical value. 1 if interaction between mediator and treatment exists.
+Logical. 1 if the interaction between treatments and mediator exists.
 }
 \description{
-A function that checks the interaction
+Check Interaction between mediator and treatments
+}
+\examples{
+\dontrun{
+df = checkArguments('dapprp','trt1','trt2','immorp',testdata)
+interaction = checkInteration(df)
+}
+
 }

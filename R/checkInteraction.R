@@ -1,16 +1,18 @@
-#' A function that checks the interaction
+
+#' Check Interaction between mediator and treatments
 #'
-#' @param Y
-#' @param T1
-#' @param T2
-#' @param M
-#' @param data
-#' @param sigLevel
+#' @param para.df A data.frame of arguments generated using checkArguments().
+#' @param sigLevel The significance level, 0.05 by default.
 #'
-#' @return a logical value. 1 if interaction between mediator and treatment exists.
+#' @return Logical. 1 if the interaction between treatments and mediator exists.
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' df = checkArguments('dapprp','trt1','trt2','immorp',testdata)
+#' interaction = checkInteration(df)
+#' }
+#'
 checkInteraction <- function(para.df,sigLevel = 0.05){
   interactionMod <- lm(Y ~ T1 + T2 + M + T1*M + T2*M, data=para.df)
   pval.gamma1 <- summary(interactionMod)$coef["T1:M","Pr(>|t|)"]

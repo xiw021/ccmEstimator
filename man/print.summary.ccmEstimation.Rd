@@ -2,7 +2,7 @@
 % Please edit documentation in R/ccmEstimation.R
 \name{print.summary.ccmEstimation}
 \alias{print.summary.ccmEstimation}
-\title{Print summary}
+\title{Print summary tables}
 \usage{
 \method{print}{summary.ccmEstimation}(x, ...)
 }
@@ -10,8 +10,14 @@
 \item{...}{}
 }
 \value{
-
+Print the summary tables
 }
 \description{
-Print summary
+Print summary tables
+}
+\examples{
+#' \dontrun{
+df = checkArguments('dapprp','trt1','trt2','immorp',testdata)
+summary(df)
+}
 }

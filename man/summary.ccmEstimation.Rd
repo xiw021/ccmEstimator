@@ -10,8 +10,14 @@
 \item{...}{}
 }
 \value{
-
+Summary tables
 }
 \description{
 Summary of ccmEstimation
+}
+\examples{
+\dontrun{
+df = checkArguments('dapprp','trt1','trt2','immorp',testdata)
+summary(df)
+}
 }

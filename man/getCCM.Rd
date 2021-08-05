@@ -17,14 +17,32 @@ getCCM(
 )
 }
 \arguments{
-\item{finiteSample}{}
+\item{Y}{A numeric vector of outcome variable, or the name of the outcome variable (as character/string) in data.frame if data provided.}
+
+\item{T1}{A binary vector of the first treatment. 1 if receiving the first treatment. Or the name of the first treatment variable (as character/string) in data.frame if data provided.}
+
+\item{T2}{A binary vector of the second treatment. 1 if receiving the second treatment. Or the name of the second treatment variable (as character/string) in data.frame if data provided.}
+
+\item{M}{A vector of an intermediary variable that is affected by T1 and T2 and that affects Y. Or the name of the intermediary variable (as character/string) in data.frame if data provided.}
+
+\item{data}{An optional data frame that contains the variables (Y, T1, T2, M)  in the model.}
+
+\item{noInteraction}{Logical, TRUE by default.  If TRUE, there is no expected interaction between the treatments and mediator.}
+
+\item{sigLevel}{The significance level, 0.05 by default.}
+
+\item{boots}{Number of bootstrap iterations, must be larger than 1000, 1000 by default.}
+
+\item{finiteSample}{Logical, FALSE by default. If False, non finite sample adjustment.}
 }
 \value{
-
+A ccmEstimation object.
 }
 \description{
 Get CCM estimands
 }
 \examples{
-
+\dontrun{
+ccm.model = getCCM('dapprp','trt1','trt2','immorp',testdata)
+}
 }

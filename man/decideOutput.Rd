@@ -7,14 +7,17 @@
 decideOutput(para.df, noInteraction = TRUE, boots = 1000, sigLevel = 0.05)
 }
 \arguments{
-\item{sigLevel}{}
+\item{para.df}{A data.frame of arguments generated using checkArguments().}
+
+\item{boots}{Number of bootstrap iterations, must be larger than 1000, 1000 by default.}
+
+\item{sigLevel}{The significance level, 0.05 by default.}
+
+\item{noInteration}{Logical, TRUE by default.  If TRUE, there is no expected interaction between the treatments and mediator.}
 }
 \value{
 
 }
 \description{
 Decide output and calculate confidence intervals
-}
-\examples{
-
 }

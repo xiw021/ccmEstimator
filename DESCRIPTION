@@ -1,6 +1,6 @@
 Package: ccmEstimator
 Type: Package
-Title: comparative causal mediation estimation
+Title: Comparative Causal Mediation Estimation
 Version: 0.1.0
 Author: Xiaohan Wu <xiw021@ucsd.edu>, Kirk Bansak <kbansak@ucsd.edu>
 Maintainer: Xiaohan Wu <xiw021@ucsd.edu>

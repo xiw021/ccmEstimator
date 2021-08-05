@@ -1,20 +1,22 @@
 #' Get CCM estimands
 #'
-#' @param Y
-#' @param T1
-#' @param T2
-#' @param M
-#' @param data
-#' @param noInteraction
-#' @param sigLevel
-#' @param boots
-#' @param finiteSample
+#' @param Y A numeric vector of outcome variable, or the name of the outcome variable (as character/string) in data.frame if data provided.
+#' @param T1 A binary vector of the first treatment. 1 if receiving the first treatment. Or the name of the first treatment variable (as character/string) in data.frame if data provided.
+#' @param T2 A binary vector of the second treatment. 1 if receiving the second treatment. Or the name of the second treatment variable (as character/string) in data.frame if data provided.
+#' @param M A vector of an intermediary variable that is affected by T1 and T2 and that affects Y. Or the name of the intermediary variable (as character/string) in data.frame if data provided.
+#' @param data  An optional data frame that contains the variables (Y, T1, T2, M)  in the model.
+#' @param noInteraction Logical, TRUE by default.  If TRUE, there is no expected interaction between the treatments and mediator.
+#' @param sigLevel The significance level, 0.05 by default.
+#' @param boots Number of bootstrap iterations, must be larger than 1000, 1000 by default.
+#' @param finiteSample Logical, FALSE by default. If False, non finite sample adjustment.
 #'
-#' @return
+#' @return A ccmEstimation object.
 #' @export
 #'
 #' @examples
-#'
+#' \dontrun{
+#' ccm.model = getCCM('dapprp','trt1','trt2','immorp',testdata)
+#' }
 
 getCCM <- function(Y,T1,T2,M,data = NULL,
                    noInteraction = TRUE,sigLevel = 0.05,

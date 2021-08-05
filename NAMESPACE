@@ -2,6 +2,6 @@
 
 S3method(print,summary.ccmEstimation)
 S3method(summary,ccmEstimation)
+export(checkArguments)
 export(checkInteraction)
-export(decideOutput)
 export(getCCM)

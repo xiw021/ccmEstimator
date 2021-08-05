@@ -2,16 +2,29 @@
 % Please edit documentation in R/checkArguments.R
 \name{checkArguments}
 \alias{checkArguments}
-\title{Check Arguments for CCM estimands}
+\title{Check input Arguments for CCM estimands}
 \usage{
 checkArguments(Y, T1, T2, M, data = NULL)
 }
 \arguments{
-\item{data}{}
+\item{Y}{A numeric vector of outcome variable, or the name of the outcome variable (as character/string) in data.frame if data provided.}
+
+\item{T1}{A binary vector of the first treatment. 1 if receiving the first treatment. Or the name of the first treatment variable (as character/string) in data.frame if data provided.}
+
+\item{T2}{A binary vector of the second treatment. 1 if receiving the second treatment. Or the name of the second treatment variable (as character/string) in data.frame if data provided.}
+
+\item{M}{A vector of an intermediary variable that is affected by T1 and T2 and that affects Y. Or the name of the intermediary variable (as character/string) in data.frame if data provided.}
+
+\item{data}{An optional data frame that contains the variables (Y, T1, T2, M)  in the model.}
 }
 \value{
-A dataframe
+A dataframe that contains the input arguments for getCCM().
 }
 \description{
-Check Arguments for CCM estimands
+Check input Arguments for CCM estimands
+}
+\examples{
+\dontrun{
+df = checkArguments('dapprp','trt1','trt2','immorp',testdata)
+}
 }

@@ -3,10 +3,14 @@
 #' @param object
 #' @param ...
 #'
-#' @return
+#' @return Summary tables
 #' @export
-#'
 #' @examples
+#' \dontrun{
+#' df = checkArguments('dapprp','trt1','trt2','immorp',testdata)
+#' summary(df)
+#' }
+
 summary.ccmEstimation <- function(object, ...)
 {
   point.estimation = c(object$ATE1,object$ATE2,object$ACME1,object$ACME2)
@@ -28,15 +32,19 @@ summary.ccmEstimation <- function(object, ...)
 }
 
 
-#' Print summary
+#' Print summary tables
 #'
 #' @param x
 #' @param ...
 #'
-#' @return
+#' @return Print the summary tables
 #' @export
 #'
 #' @examples
+#' #' \dontrun{
+#' df = checkArguments('dapprp','trt1','trt2','immorp',testdata)
+#' summary(df)
+#' }
 print.summary.ccmEstimation <- function(x, ...)
 {
   cat("Call:\n")

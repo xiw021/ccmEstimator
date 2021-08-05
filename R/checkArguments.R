@@ -1,17 +1,18 @@
 
-#' Check Arguments for CCM estimands
+#' Check input Arguments for CCM estimands
 #'
-#' @param Y
-#' @param T1
-#' @param T2
-#' @param M
-#' @param data
+#' @param Y A numeric vector of outcome variable, or the name of the outcome variable (as character/string) in data.frame if data provided.
+#' @param T1 A binary vector of the first treatment. 1 if receiving the first treatment. Or the name of the first treatment variable (as character/string) in data.frame if data provided.
+#' @param T2 A binary vector of the second treatment. 1 if receiving the second treatment. Or the name of the second treatment variable (as character/string) in data.frame if data provided.
+#' @param M A vector of an intermediary variable that is affected by T1 and T2 and that affects Y. Or the name of the intermediary variable (as character/string) in data.frame if data provided.
+#' @param data  An optional data frame that contains the variables (Y, T1, T2, M)  in the model.
+#' @export
+#' @return A dataframe that contains the input arguments for getCCM().
 #'
-#'
-#'
-#' @return A dataframe
-#'
-#'
+#' @examples
+#' \dontrun{
+#' df = checkArguments('dapprp','trt1','trt2','immorp',testdata)
+#' }
 
 checkArguments <- function(Y,T1,T2,M,data = NULL){
   if (!is.null(data)){

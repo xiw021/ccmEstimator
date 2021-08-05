@@ -1,15 +1,14 @@
 
 #' Decide output and calculate confidence intervals
 #'
-#' @param para.df
-#' @param noInteration
-#' @param boots
-#' @param sigLevel
+#' @param para.df A data.frame of arguments generated using checkArguments().
+#' @param noInteration Logical, TRUE by default.  If TRUE, there is no expected interaction between the treatments and mediator.
+
+#' @param boots Number of bootstrap iterations, must be larger than 1000, 1000 by default.
+#' @param sigLevel The significance level, 0.05 by default.
 #'
 #' @return
-#' @export
 #'
-#' @examples
 #'
 decideOutput <- function(para.df,
                          noInteraction = TRUE,boots = 1000,sigLevel = 0.05){
