@@ -1,15 +1,11 @@
 #' Summary of ccmEstimation
 #'
-#' @param object
-#' @param ...
+#' @param object output of getCCM()
+#' @param ... parameters for summary
 #'
 #' @return Summary tables
 #' @export
-#' @examples
-#' \dontrun{
-#' df = checkArguments('dapprp','trt1','trt2','immorp',testdata)
-#' summary(df)
-#' }
+
 
 summary.ccmEstimation <- function(object, ...)
 {
@@ -34,17 +30,13 @@ summary.ccmEstimation <- function(object, ...)
 
 #' Print summary tables
 #'
-#' @param x
-#' @param ...
+#' @param x summary.ccmEstimation object
+#' @param ... parameters for print summary
 #'
 #' @return Print the summary tables
 #' @export
 #'
-#' @examples
-#' #' \dontrun{
-#' df = checkArguments('dapprp','trt1','trt2','immorp',testdata)
-#' summary(df)
-#' }
+
 print.summary.ccmEstimation <- function(x, ...)
 {
   cat("Call:\n")

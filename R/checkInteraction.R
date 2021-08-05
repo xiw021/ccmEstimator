@@ -5,6 +5,7 @@
 #' @param sigLevel The significance level, 0.05 by default.
 #'
 #' @return Logical. 1 if the interaction between treatments and mediator exists.
+#' @importFrom stats lm
 #' @export
 #'
 #' @examples

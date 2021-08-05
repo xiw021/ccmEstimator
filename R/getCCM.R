@@ -9,7 +9,7 @@
 #' @param sigLevel The significance level, 0.05 by default.
 #' @param boots Number of bootstrap iterations, must be larger than 1000, 1000 by default.
 #' @param finiteSample Logical, FALSE by default. If False, non finite sample adjustment.
-#'
+#' @importFrom stats var
 #' @return A ccmEstimation object.
 #' @export
 #'
@@ -92,8 +92,7 @@ getCCM <- function(Y,T1,T2,M,data = NULL,
 
     omega1 <- beta + gamma1
     omega2 <- beta + gamma2
-    Var.et1 <- var(sdat$M[sdat$T1==1])
-    Var.et2 <- var(sdat$M[sdat$T2==1])
+
 
     ACMET1 <- alpha1*(beta+gamma1)
     ACMET2 <- alpha2*(beta+gamma2)

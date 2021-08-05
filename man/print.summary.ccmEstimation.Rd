@@ -7,17 +7,13 @@
 \method{print}{summary.ccmEstimation}(x, ...)
 }
 \arguments{
-\item{...}{}
+\item{x}{summary.ccmEstimation object}
+
+\item{...}{parameters for print summary}
 }
 \value{
 Print the summary tables
 }
 \description{
 Print summary tables
-}
-\examples{
-#' \dontrun{
-df = checkArguments('dapprp','trt1','trt2','immorp',testdata)
-summary(df)
-}
 }

@@ -7,17 +7,13 @@
 \method{summary}{ccmEstimation}(object, ...)
 }
 \arguments{
-\item{...}{}
+\item{object}{output of getCCM()}
+
+\item{...}{parameters for summary}
 }
 \value{
 Summary tables
 }
 \description{
 Summary of ccmEstimation
-}
-\examples{
-\dontrun{
-df = checkArguments('dapprp','trt1','trt2','immorp',testdata)
-summary(df)
-}
 }

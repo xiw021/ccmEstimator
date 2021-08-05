@@ -8,7 +8,7 @@
 #' @param data  An optional data frame that contains the variables (Y, T1, T2, M)  in the model.
 #' @export
 #' @return A dataframe that contains the input arguments for getCCM().
-#'
+#' @importFrom stats na.omit
 #' @examples
 #' \dontrun{
 #' df = checkArguments('dapprp','trt1','trt2','immorp',testdata)
