@@ -12,7 +12,8 @@ RoxygenNote: 7.1.1
 Suggests: 
     knitr,
     rmarkdown,
-    covr
+    covr,
+    testthat
 VignetteBuilder: knitr
 URL: https://github.com/xw2510/ccmEstimator
 BugReports: https://github.com/xw2510/ccmEstimator/issues
