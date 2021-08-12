@@ -3,7 +3,7 @@
 # ccmEstimator
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.com/xw2510/ccmEstimator.svg?branch=master)](https://travis-ci.com/xw2510/ccmEstimator) <!-- badges: end -->
+[![Travis build status](https://travis-ci.com/xw2510/ccmEstimator.svg?branch=master)](https://travis-ci.com/xw2510/ccmEstimator) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/xw2510/ccmEstimator?branch=master&svg=true)](https://ci.appveyor.com/project/xw2510/ccmEstimator) <!-- badges: end -->
 
 The goal of ccmEstimator is to generate comparative causal mediation estimation.
 
