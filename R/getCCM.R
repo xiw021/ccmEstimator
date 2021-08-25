@@ -1,36 +1,56 @@
-#' Get CCM estimands
+#' @title Comparative Causal Mediation Analysis
+#' @description Function to perform comparative causal mediation analysis to compare the mediation effects of different treatments via a common mediator.
+#' Function requires two separate treaments (as well as a control condition) and one mediator.
+#' @usage getCCM(Y,T1,T2,M,data = NULL,
+#'   noInteraction = TRUE,sigLevel = 0.05,
+#'   boots = 1000)
+#' @param Y numeric outcome variable. Should be a vector if a data frame is not provided through the \code{data} argument, or the ("character") name of the variable in the data frame if provided.
+#' @param T1 binary indicator for first treatment. Should be a vector if a data frame is not provided through the \code{data} argument, or the ("character") name of the variable in the data frame if provided.
+#' @param T2 binary indicator for second treatment. Should be a vector if a data frame is not provided through the \code{data} argument, or the ("character") name of the variable in the data frame if provided.
+#' @param M numeric mediator variable. Should be a vector if a data frame is not provided through the \code{data} argument, or the ("character") name of the variable in the data frame if provided.
+#' @param data an optional data frame containing the variables to be used in analysis
+#' @param noInteraction logical. If \code{TRUE} (the default), the assumption of no interaction between the treatments and mediator is employed in the analysis.
+#' @param sigLevel significance level to use in construction of confidence intervals. Default is 0.05 (i.e. 95 percent confidence intervals).
+#' @param boots number of bootstrap resamples taken for construction of confidence intervals.
+#' @details Function will automatically assess the comparative causal mediation analysis scope conditions
+#' (i.e. for each comparative causal mediation estimand, a numerator and denominator that are both statistically significantly estimated and of the same sign).
+#' Results will be returned for each comparative causal mediation estimand only if scope conditions are met for it.
+#' See "Scope Conditions" section in Bansak (2020) for more information.
+#' Results will also be returned for the ATE and ACME for each treatment.
 #'
-#' @param Y A numeric vector of outcome variable, or the name of the outcome variable (as character/string) in data.frame if data provided.
-#' @param T1 A binary vector of the first treatment. 1 if receiving the first treatment. Or the name of the first treatment variable (as character/string) in data.frame if data provided.
-#' @param T2 A binary vector of the second treatment. 1 if receiving the second treatment. Or the name of the second treatment variable (as character/string) in data.frame if data provided.
-#' @param M A vector of an intermediary variable that is affected by T1 and T2 and that affects Y. Or the name of the intermediary variable (as character/string) in data.frame if data provided.
-#' @param data  An optional data frame that contains the variables (Y, T1, T2, M)  in the model.
-#' @param noInteraction Logical, TRUE by default.  If TRUE, there is no expected interaction between the treatments and mediator.
-#' @param sigLevel The significance level, 0.05 by default.
-#' @param boots Number of bootstrap iterations, must be larger than 1000, 1000 by default.
-#' @param finiteSample Logical, FALSE by default. If False, non finite sample adjustment.
+#' If \code{noInteraction = TRUE} (the default setting), function will automatically assess the possibility of interactions between treatments and mediator and return a warning in case evidence of such interactions are found.
 #' @importFrom stats var
-#' @return A ccmEstimation object.
+#' @return A ccmEstimation object, which contains the estimates and confidence intervals for the two comparative causal mediation analysis estimands, as well as the ATE and ACME for each treatment.
+#' User should input the ccmEstimation object into the \code{summary()} function to view the estimation results.
+#'
+#' Note also that the comparative causal mediation analysis results and interpretation of the results
+#' will be printed in the console.
+#' @author Kirk Bansak and Xiaohan Wu
+#' @references Bansak, K. (2020). Comparative causal mediation and relaxing the assumption of no mediator-outcome confounding: An application to international law and audience costs. Political Analysis, 28(2), 222-243.
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' ccm.model = getCCM('dapprp','trt1','trt2','immorp',testdata)
-#' }
+#' #Example from application in Bansak (2020)
+#' data(ICAapp)
+#' set.seed(321, kind = "Mersenne-Twister", normal.kind = "Inversion")
+#' ccm.results <-
+#'    getCCM(Y = "dapprp", T1 = "trt1", T2 = "trt2", M = "immorp", data = ICAapp,
+#'    noInteraction = TRUE, sigLevel = 0.05, boots = 10000)
+#' summary(ccm.results)
 
 getCCM <- function(Y,T1,T2,M,data = NULL,
                    noInteraction = TRUE,sigLevel = 0.05,
-                   boots = 1000, finiteSample = FALSE){
-  para.df = checkArguments(Y,T1,T2,M,data)
+                   boots = 1000){
+  para.df = checkData(Y,T1,T2,M,data)
 
   if (noInteraction == TRUE){
     interaction.check = checkInteraction(para.df,sigLevel)
     if (interaction.check == 1){
-      warning('Interactions between treatment and mediator exist.  Please consider setting noInteration as FALSE.')
+      warning('Interactions between treatments and mediator may exist. Please consider setting noInteration as FALSE.')
     }
   }
 
-  decide.output <- decideOutput(para.df,noInteraction,boots,sigLevel)
+  decide.output <- decideOutput(para.df,noInteraction,sigLevel,boots)
   flag1 <- decide.output[[1]]
   flag2 <- decide.output[[2]]
   df.ci <- decide.output[[3]]
@@ -39,16 +59,14 @@ getCCM <- function(Y,T1,T2,M,data = NULL,
     mod1 <- lm(M ~ T1 + T2, data=para.df)
     mod2 <- lm(Y ~ T1 + T2 + M, data=para.df)
     fmod <- lm(Y ~ T1 + T2, data=para.df)
-    mmod <- lm(cbind(M,Y) ~ T1 + T2, data=para.df)
 
-    model.list = list(mod1,mod2,fmod,mmod)
+    model.list = list(mod1,mod2,fmod)
 
     alpha1 <- mod1$coef["T1"]
     alpha2 <- mod1$coef["T2"]
     beta <- mod2$coef["M"]
     ATE1 <- fmod$coef["T1"]
     ATE2 <- fmod$coef["T2"]
-
     ACME1 <- alpha1*beta
     ACME2 <- alpha2*beta
 
@@ -76,6 +94,7 @@ getCCM <- function(Y,T1,T2,M,data = NULL,
                 confidenceIntervals = df.ci)
 
   }else{
+
     mod1 <- lm(M ~ T1 + T2, data=para.df)
     mod2 <- lm(Y ~ T1 + T2 + M + T1*M + T2*M, data=para.df)
     fmod <- lm(Y ~ T1 + T2, data=para.df)
@@ -89,11 +108,8 @@ getCCM <- function(Y,T1,T2,M,data = NULL,
     gamma2 <- mod2$coef["T2:M"]
     ATE1 <- tau1 <- fmod$coef["T1"]
     ATE2 <- tau2 <- fmod$coef["T2"]
-
     omega1 <- beta + gamma1
     omega2 <- beta + gamma2
-
-
     ACMET1 <- alpha1*(beta+gamma1)
     ACMET2 <- alpha2*(beta+gamma2)
 
@@ -137,9 +153,10 @@ getCCM <- function(Y,T1,T2,M,data = NULL,
       cat(paste0('The proportion mediated for treatment 1 is ' , round(1/estimand2,3), ' times larger than that for treatment 2 \n   (with ',(1-sigLevel)*100,'% CI: [', round(1/out$confidenceIntervals['97.5%','estimand2.ci'],3),',',round(1/out$confidenceIntervals['2.5%','estimand2.ci'],3),'])\n'))
     }
   }
-  cat('Please use summary() to view the estimation results.')
+
+  cat('Please use summary() to view the results in more detail.')
   out$call <- match.call()
   class(out) <- "ccmEstimation"
   out
-}
 
+}

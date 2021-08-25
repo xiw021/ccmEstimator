@@ -2,25 +2,33 @@
 % Please edit documentation in R/checkInteraction.R
 \name{checkInteraction}
 \alias{checkInteraction}
-\title{Check Interaction between mediator and treatments}
+\title{Subsidiary Function for Comparative Causal Mediation Analysis}
 \usage{
-checkInteraction(para.df, sigLevel = 0.05)
+checkInteraction(para.df,sigLevel = 0.05)
 }
 \arguments{
-\item{para.df}{A data.frame of arguments generated using checkArguments().}
+\item{para.df}{a data frame containing the final data to be analyzed, generated using \code{checkData()}.}
 
-\item{sigLevel}{The significance level, 0.05 by default.}
+\item{sigLevel}{significance level used to conduct hypothesis tests.}
 }
 \value{
-Logical. 1 if the interaction between treatments and mediator exists.
+logical. 1 if there is evidence of interaction between treatment(s) and mediator.
 }
 \description{
-Check Interaction between mediator and treatments
+Subsidiary function to assess interactions between treatments and mediator
+}
+\note{
+This function is called internally and thus should not be used directly.
 }
 \examples{
-\dontrun{
-df = checkArguments('dapprp','trt1','trt2','immorp',testdata)
-interaction = checkInteration(df)
-}
+data(ICAapp)
+final.dat <- checkData(Y = "dapprp", T1 = "trt1", T2 = "trt2", M = "immorp", data = ICAapp)
+checkInteraction(final.dat,sigLevel = 0.05)
 
+}
+\references{
+Bansak, K. (2020). Comparative causal mediation and relaxing the assumption of no mediator-outcome confounding: An application to international law and audience costs. Political Analysis, 28(2), 222-243.
+}
+\author{
+Kirk Bansak and Xiaohan Wu
 }

@@ -1,13 +1,6 @@
-#' Summary of ccmEstimation
-#'
-#' @param object output of getCCM()
-#' @param ... parameters for summary
-#'
-#' @return Summary tables
 #' @export
 
-
-summary.ccmEstimation <- function(object, ...)
+summary.ccmEstimation <- function(object,...)
 {
   point.estimation = c(object$ATE1,object$ATE2,object$ACME1,object$ACME2)
   lower.ci = unname(as.list(object$confidenceIntervals[1,1:4]))
@@ -28,23 +21,16 @@ summary.ccmEstimation <- function(object, ...)
 }
 
 
-#' Print summary tables
-#'
-#' @param x summary.ccmEstimation object
-#' @param ... parameters for print summary
-#'
-#' @return Print the summary tables
-#' @export
-#'
+#'@export
 
-print.summary.ccmEstimation <- function(x, ...)
+print.summary.ccmEstimation <- function(x,...)
 {
   cat("Call:\n")
   print(x$call)
   cat("\n")
   print(x$tab1)
   cat("\n")
-  cat("* Biased estimation. See Bansak(2019) for details.\n")
+  cat("* Biased estimation. See Bansak(2020) for details.\n")
   cat("\n")
   print(x$tab2)
 }

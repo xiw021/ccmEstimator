@@ -2,22 +2,32 @@
 % Please edit documentation in R/decideOutput.R
 \name{decideOutput}
 \alias{decideOutput}
-\title{Decide output and calculate confidence intervals}
+\title{Subsidiary Function for Comparative Causal Mediation Analysis}
 \usage{
-decideOutput(para.df, noInteraction = TRUE, boots = 1000, sigLevel = 0.05)
+decideOutput(para.df,noInteraction = TRUE,
+  sigLevel = 0.05,boots = 1000)
 }
 \arguments{
-\item{para.df}{A data.frame of arguments generated using checkArguments().}
+\item{para.df}{a data frame containing the final data to be analyzed, generated using \code{checkData()}.}
 
-\item{noInteraction}{Logical, TRUE by default.  If TRUE, there is no expected interaction between the treatments and mediator.}
+\item{noInteraction}{logical. If \code{TRUE} (the default), the assumption of no interaction between the treatments and mediator is employed in the analysis.}
 
-\item{boots}{Number of bootstrap iterations, must be larger than 1000, 1000 by default.}
+\item{sigLevel}{significance level to use in construction of confidence intervals. Default is 0.05 (i.e. 95 percent confidence intervals).}
 
-\item{sigLevel}{The significance level, 0.05 by default.}
+\item{boots}{number of bootstrap resamples taken for construction of confidence intervals.}
 }
 \value{
-
+A list containing confidence intervals along with flags indicating the appropriate output to return to getCCM().
 }
 \description{
-Decide output and calculate confidence intervals
+Subsidiary function to determine appropriate output and calculate confidence intervals
+}
+\note{
+This function is called internally and thus should not be used directly.
+}
+\references{
+Bansak, K. (2020). Comparative causal mediation and relaxing the assumption of no mediator-outcome confounding: An application to international law and audience costs. Political Analysis, 28(2), 222-243.
+}
+\author{
+Kirk Bansak and Xiaohan Wu
 }

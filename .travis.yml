@@ -9,11 +9,9 @@ os:
  - linux
  - osx
 
-
 r:
  - 3.3
  - release
- - devel
 
 r_packages:
   - covr

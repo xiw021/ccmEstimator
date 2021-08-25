@@ -1,3 +1,4 @@
 ## code to prepare `DATASET` dataset goes here
 
-#usethis::use_data(DATASET, overwrite = TRUE)
+ICAapp = read.csv(file = system.file("extdata","ICAapp.csv",package = 'ccmEstimator'))
+usethis::use_data(ICAapp, overwrite = TRUE)

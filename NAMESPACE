@@ -2,7 +2,7 @@
 
 S3method(print,summary.ccmEstimation)
 S3method(summary,ccmEstimation)
-export(checkArguments)
+export(checkData)
 export(checkInteraction)
 export(getCCM)
 importFrom(stats,lm)
