@@ -144,17 +144,17 @@ getCCM <- function(Y,T1,T2,M,data = NULL,
 
   if (!is.na(estimand1)){
     if (estimand1 > 1){
-      cat(paste0('The estimated mediation effect for treatment 2 is ' , round(estimand1,3), ' times larger than the mediation effect for treatment 1 \n   (with ',(1-sigLevel)*100,'% CI: [', round(out$confidenceIntervals[as.character(paste0(siglevel/2*100),'%'),'estimand1.ci'],3),',',round(out$confidenceIntervals[paste0(as.character((1-siglevel/2)*100),'%'),'estimand1.ci'],3),'])\n'))
+      cat(paste0('The estimated mediation effect for treatment 2 is ' , round(estimand1,3), ' times larger than the mediation effect for treatment 1 \n   (with ',(1-sigLevel)*100,'% CI: [', round(out$confidenceIntervals[as.character(paste0(sigLevel/2*100),'%'),'estimand1.ci'],3),',',round(out$confidenceIntervals[paste0(as.character((1-sigLevel/2)*100),'%'),'estimand1.ci'],3),'])\n'))
     }else{
-      cat(paste0('The estimated mediation effect for treatment 2 is ' , round(estimand1,3), ' times the size of the mediation effect for treatment 1 \n   (with ',(1-sigLevel)*100,'% CI: [', round(out$confidenceIntervals[as.character(paste0(siglevel/2*100),'%'),'estimand1.ci'],3),',',round(out$confidenceIntervals[paste0(as.character((1-siglevel/2)*100),'%'),'estimand1.ci'],3),'])\n'))
+      cat(paste0('The estimated mediation effect for treatment 2 is ' , round(estimand1,3), ' times the size of the mediation effect for treatment 1 \n   (with ',(1-sigLevel)*100,'% CI: [', round(out$confidenceIntervals[as.character(paste0(sigLevel/2*100),'%'),'estimand1.ci'],3),',',round(out$confidenceIntervals[paste0(as.character((1-sigLevel/2)*100),'%'),'estimand1.ci'],3),'])\n'))
     }
   }
 
   if (!is.na(estimand2)){
     if (estimand2 > 1){
-      cat(paste0('The estimated proportion mediated for treatment 2 is ' , round(estimand2,3), ' times larger than that for treatment 1 \n   (with ',(1-sigLevel)*100,'% CI: [', round(out$confidenceIntervals[as.character(paste0(siglevel/2*100),'%'),'estimand2.ci'],3),',',round(out$confidenceIntervals[paste0(as.character((1-siglevel/2)*100),'%'),'estimand2.ci'],3),'])\n'))
+      cat(paste0('The estimated proportion mediated for treatment 2 is ' , round(estimand2,3), ' times larger than that for treatment 1 \n   (with ',(1-sigLevel)*100,'% CI: [', round(out$confidenceIntervals[as.character(paste0(sigLevel/2*100),'%'),'estimand2.ci'],3),',',round(out$confidenceIntervals[paste0(as.character((1-sigLevel/2)*100),'%'),'estimand2.ci'],3),'])\n'))
     }else{
-      cat(paste0('The estimated proportion mediated for treatment 2 is ' , round(estimand2,3), ' times the size of that for treatment 1 \n   (with ',(1-sigLevel)*100,'% CI: [', round(out$confidenceIntervals[as.character(paste0(siglevel/2*100),'%'),'estimand2.ci'],3),',',round(out$confidenceIntervals[paste0(as.character((1-siglevel/2)*100),'%'),'estimand2.ci'],3),'])\n'))
+      cat(paste0('The estimated proportion mediated for treatment 2 is ' , round(estimand2,3), ' times the size of that for treatment 1 \n   (with ',(1-sigLevel)*100,'% CI: [', round(out$confidenceIntervals[as.character(paste0(sigLevel/2*100),'%'),'estimand2.ci'],3),',',round(out$confidenceIntervals[paste0(as.character((1-sigLevel/2)*100),'%'),'estimand2.ci'],3),'])\n'))
     }
   }
 
