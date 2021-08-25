@@ -8,7 +8,7 @@
 #' @param boots number of bootstrap resamples taken for construction of confidence intervals.
 #' @importFrom stats quantile
 #' @return A list containing confidence intervals along with flags indicating the appropriate output to return to getCCM().
-#' @note This function is called internally and thus should not be used directly.
+#' @note This function is called internally and should not be used directly.
 #' @author Kirk Bansak and Xiaohan Wu
 #' @references Bansak, K. (2020). Comparative causal mediation and relaxing the assumption of no mediator-outcome confounding: An application to international law and audience costs. Political Analysis, 28(2), 222-243.
 

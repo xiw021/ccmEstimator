@@ -4,7 +4,7 @@
 #' @param para.df a data frame containing the final data to be analyzed, generated using \code{checkData()}.
 #' @param sigLevel significance level used to conduct hypothesis tests.
 #' @return logical. 1 if there is evidence of interaction between treatment(s) and mediator.
-#' @note This function is called internally and thus should not be used directly.
+#' @note This function is called internally and should not be used directly.
 #' @author Kirk Bansak and Xiaohan Wu
 #' @references Bansak, K. (2020). Comparative causal mediation and relaxing the assumption of no mediator-outcome confounding: An application to international law and audience costs. Political Analysis, 28(2), 222-243.
 #' @importFrom stats lm

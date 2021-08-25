@@ -18,7 +18,7 @@ logical. 1 if there is evidence of interaction between treatment(s) and mediator
 Subsidiary function to assess interactions between treatments and mediator
 }
 \note{
-This function is called internally and thus should not be used directly.
+This function is called internally and should not be used directly.
 }
 \examples{
 data(ICAapp)

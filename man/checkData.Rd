@@ -24,7 +24,7 @@ A data frame that contains the final data to be analyzed in the \code{getCCM()} 
 Subsidiary function to check correctness of data structure and return final data for analysis
 }
 \note{
-This function is called internally and thus should not be used directly.
+This function is called internally but may be used directly to recover final data set that can be used for analysis in the \code{getCCM()} function.
 }
 \examples{
 data(ICAapp)
@@ -36,7 +36,5 @@ Bansak, K. (2020). Comparative causal mediation and relaxing the assumption of n
 Bansak, K. (2020). Comparative causal mediation and relaxing the assumption of no mediator-outcome confounding: An application to international law and audience costs. Political Analysis, 28(2), 222-243.
 }
 \author{
-Kirk Bansak and Xiaohan Wu
-
 Kirk Bansak and Xiaohan Wu
 }

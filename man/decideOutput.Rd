@@ -23,7 +23,7 @@ A list containing confidence intervals along with flags indicating the appropria
 Subsidiary function to determine appropriate output and calculate confidence intervals
 }
 \note{
-This function is called internally and thus should not be used directly.
+This function is called internally and should not be used directly.
 }
 \references{
 Bansak, K. (2020). Comparative causal mediation and relaxing the assumption of no mediator-outcome confounding: An application to international law and audience costs. Political Analysis, 28(2), 222-243.

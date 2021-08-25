@@ -1,22 +1,23 @@
-#' @title ICAapp data
-#' @description description for ICAapp data
+#' @title Application data
+#' @description Application data used to illustrate comparative causal mediation analysis methods in Bansak (2020).
 #' @format a data frame with 14 variables
 #'
 #' \describe{
-#' \item{respid}{Needs update}
-#' \item{appr}{Needs update}
-#' \item{dapprp}{Needs update}
-#' \item{vote}{Needs update}
-#' \item{nvotep}{Needs update}
-#' \item{moral}{Needs update}
-#' \item{immorp}{Needs update}
-#' \item{retal}{Needs update}
-#' \item{retalp}{Needs update}
-#' \item{trt1}{Needs update}
-#' \item{trt2}{Needs update}
-#' \item{age}{Needs update}
-#' \item{male}{Needs update}
-#' \item{educ}{Needs update}
+#' \item{respid}{Anonymized respondent id.}
+#' \item{appr}{Approval of U.S. government's decision. Response options include "Approve Strongly" (1), "Approve" (2), "Neither Approve nor Disapprove" (3), "Disapprove" (4), and "Disapprove Strongly" (5).}
+#' \item{dapprp}{Indicator for disapproval of U.S. government's decision. Dichotomized version of 'appr', with 1 indicating "Disapprove" or "Disapprove Strongly", and 0 otherwise.}
+#' \item{vote}{Propensity to reward/punish U.S. Senator who supported U.S. government's decision, in the form of increased/decreased willingness to vote for Senator. Response options include "Increase Greatly" (1), "Increase" (2), "Neither Increase nor Decrease" (3), "Decrease" (4), and "Decrease Greatly" (5).}
+#' \item{nvotep}{Indicator for being less likely to vote for U.S. Senator who supported U.S. government's decision. Dichotomized version of 'vote', with 1 indicating "Decrease" or "Decrease Greatly", and 0 otherwise.}
+#' \item{moral}{Perceived immorality of U.S. government's decision. Response options include "Definitely Right" (1), "Probably Right" (2), "Not Morally Right or Wrong" (3), "Probably Wrong" (4), and "Definitely Wrong" (5).}
+#' \item{immorp}{Indicator for perceiving U.S. government's decision to be morally wrong. Dichotomized version of 'moral', with 1 indicating "Probably Wrong" or "Definitely Wrong", and 0 otherwise.}
+#' \item{retal}{Belief regarding whether U.S. government's decision would encourage adversaries to follow suit in the future. Response options include "Agree Strongly" (1), "Agree" (2), "Neither Agree nor Disagree" (3), "Disagree" (4), and "Disagree Strongly" (5).}
+#' \item{retalp}{Indicator for belief that U.S. government's decision would encourage adversaries to follow suit in the future. Dichotomized version of 'retal', with 1 indicating "Agree" or "Agree Strongly", and 0 otherwise.}
+#' \item{trt1}{Indicator for assignment to informal commitment treatment condition.}
+#' \item{trt2}{Indicator for assignment to legal commitment treatment condition.}
+#' \item{age}{Age of respondent.}
+#' \item{male}{Indicator for whether respondent is male (1) or female (0).}
+#' \item{educ}{Highest level of education achieved by respondent, including less than high school (1), high school (2), some college (3), and college graduate (4).}
 #' }
 #'
+#' @references Bansak, K. (2020). Comparative causal mediation and relaxing the assumption of no mediator-outcome confounding: An application to international law and audience costs. Political Analysis, 28(2), 222-243.
 "ICAapp"
