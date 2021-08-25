@@ -142,7 +142,7 @@ getCCM <- function(Y,T1,T2,M,data = NULL,
     if (estimand1 > 1){
       cat(paste0('The mediation effect for treatment 2 is ' , round(estimand1,3), ' times larger than the mediation effect for treatment 1 \n   (with ',(1-sigLevel)*100,'% CI: [', round(out$confidenceIntervals['2.5%','estimand1.ci'],3),',',round(out$confidenceIntervals['97.5%','estimand1.ci'],3),'])\n'))
     }else{
-      cat(paste0('The mediation effect for treatment 1 is' , round(1/estimand1,3), ' times larger than the mediation effect for treatment 2 \n   (with ',(1-sigLevel)*100,'% CI: [', round(1/out$confidenceIntervals['97.5%','estimand1.ci'],3),',',round(1/out$confidenceIntervals['2.5%','estimand1.ci'],3),'])\n'))
+      cat(paste0('The mediation effect for treatment 1 is ' , round(1/estimand1,3), ' times larger than the mediation effect for treatment 2 \n   (with ',(1-sigLevel)*100,'% CI: [', round(1/out$confidenceIntervals['97.5%','estimand1.ci'],3),',',round(1/out$confidenceIntervals['2.5%','estimand1.ci'],3),'])\n'))
     }
   }
 

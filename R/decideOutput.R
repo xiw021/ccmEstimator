@@ -56,32 +56,33 @@ decideOutput <- function(para.df,noInteraction = TRUE,
     scope.condition2 <- quantile(ACME2.vec,probs = sigLevel/2)*quantile(ACME2.vec,probs = 1 - sigLevel/2)
     scope.condition3 <- quantile(PM1.vec,probs = sigLevel/2)*quantile(PM1.vec,probs = 1 - sigLevel/2)
     scope.condition4 <- quantile(PM2.vec,probs = sigLevel/2)*quantile(PM2.vec,probs = 1 - sigLevel/2)
+    scope.condition5 <- quantile(ACME1.vec,probs = sigLevel/2)*quantile(ACME2.vec,probs = sigLevel/2)
+    scope.condition6 <- quantile(PM1.vec,probs = sigLevel/2)*quantile(PM2.vec,probs = sigLevel/2)
     if ((scope.condition1 <= 0)|(scope.condition2 <= 0)){
       flag1 <- 1
       flag2 <- 1
       warning("Scope conditions for estimand 1 and estimand 2 are not satisfied. Estimand 1 and estimand 2 cannot be reliably estimated.")
     }else{
-      flag1 <- 0
-      if ((scope.condition3 < 0)|(scope.condition4 < 0)){
+      if (scope.condition5 <= 0){
+        flag1 <- 1
         flag2 <- 1
-        warning("Scope conditions for estimand 2 are not satisfied. Estimand 2 cannot be reliably estimated.")
+        warning("ACME1 and ACME2 have different signs. Estimand 1 and estimand 2 cannot be reliably estimated.")
       }else{
-        flag2 <- 0
+        flag1 <- 0
+        if ((scope.condition3 < 0)|(scope.condition4 < 0)){
+          flag2 <- 1
+          warning("Scope conditions for estimand 2 are not satisfied. Estimand 2 cannot be reliably estimated.")
+        }else{
+          if (scope.condition6 <= 0){
+            flag2 <- 1
+            warning("Proportions mediated have different signs. Estimand 2 cannot be reliably estimated.")
+          }else{
+            flag2 <- 0
+          }
+        }
       }
     }
 
-    scope.condition5 <- quantile(ACME1.vec,probs = sigLevel/2)*quantile(ACME2.vec,probs = sigLevel/2)
-    scope.condition6 <- quantile(PM1.vec,probs = sigLevel/2)*quantile(PM2.vec,probs = sigLevel/2)
-    if ((scope.condition1 > 0) & (scope.condition2 > 0) & scope.condition5 <= 0){
-      flag1 <- 1
-      flag2 <- 1
-      warning("ACME1 and ACME2 have different signs. Estimand 1 and estimand 2 are not available.")
-    }else{
-      if ((scope.condition3 > 0) & (scope.condition4 > 0) & scope.condition6 <= 0){
-        flag2 <- 1
-        warning("Proportions mediated have different signs. Estimand 2 is not available.")
-      }
-    }
 
     ATE1.ci <- c(quantile(ATE1.vec,probs = sigLevel/2),quantile(ATE1.vec,probs = 1 - sigLevel/2))
     ATE2.ci <- c(quantile(ATE2.vec,probs = sigLevel/2),quantile(ATE2.vec,probs = 1 - sigLevel/2))
@@ -157,30 +158,30 @@ decideOutput <- function(para.df,noInteraction = TRUE,
     scope.condition2 <- quantile(ACMET2.vec,probs = sigLevel/2)*quantile(ACMET2.vec,probs = 1 - sigLevel/2)
     scope.condition3 <- quantile(PM1.vec,probs = sigLevel/2)*quantile(PM1.vec,probs = 1 - sigLevel/2)
     scope.condition4 <- quantile(PM2.vec,probs = sigLevel/2)*quantile(PM2.vec,probs = 1 - sigLevel/2)
+    scope.condition5 <- quantile(ACMET1.vec,probs = sigLevel/2)*quantile(ACMET2.vec,probs = sigLevel/2)
+    scope.condition6 <- quantile(PM1.vec,probs = sigLevel/2)*quantile(PM2.vec,probs = sigLevel/2)
     if ((scope.condition1 <= 0)|(scope.condition2 <= 0)){
       flag1 <- 1
       flag2 <- 1
       warning("Scope conditions for estimand 1 and estimand 2 are not satisfied. Estimand 1 and estimand 2 cannot be reliably estimated.")
     }else{
-      flag1 <- 0
-      if ((scope.condition3 <= 0)|(scope.condition4 <= 0)){
+      if (scope.condition5 <= 0){
+        flag1 <- 1
         flag2 <- 1
-        warning("Scope conditions for estimand 2 are not satisfied. Estimand 2 cannot be reliably estimated.")
+        warning("ACME1 and ACME2 have different signs. Estimand 1 and estimand 2 cannot be reliably estimated.")
       }else{
-        flag2 <- 0
-      }
-    }
-
-    scope.condition5 <- quantile(ACMET1.vec,probs = sigLevel/2)*quantile(ACMET2.vec,probs = sigLevel/2)
-    scope.condition6 <- quantile(PM1.vec,probs = sigLevel/2)*quantile(PM2.vec,probs = sigLevel/2)
-    if ((scope.condition1 > 0) & (scope.condition2 > 0) & scope.condition5 <= 0){
-      flag1 <- 1
-      flag2 <- 1
-      warning("ACMET1 and ACMET2 have different signs. Estimand 1 and estimand 2 are not available.")
-    }else{
-      if ((scope.condition3 > 0) & (scope.condition4 > 0) & scope.condition6 <= 0){
-        flag2 <- 1
-        warning("Proportions mediated have different signs. Estimand 2 is not available.")
+        flag1 <- 0
+        if ((scope.condition3 < 0)|(scope.condition4 < 0)){
+          flag2 <- 1
+          warning("Scope conditions for estimand 2 are not satisfied. Estimand 2 cannot be reliably estimated.")
+        }else{
+          if (scope.condition6 <= 0){
+            flag2 <- 1
+            warning("Proportions mediated have different signs. Estimand 2 cannot be reliably estimated.")
+          }else{
+            flag2 <- 0
+          }
+        }
       }
     }
 
