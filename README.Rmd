@@ -44,6 +44,7 @@ set.seed(321, kind = "Mersenne-Twister", normal.kind = "Inversion")
 ccm.results <-
    getCCM(Y = "dapprp", T1 = "trt1", T2 = "trt2", M = "immorp", data = ICAapp,
    noInteraction = TRUE, sigLevel = 0.05, boots = 1000)
+
 summary(ccm.results)
 ```
 
