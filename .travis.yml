@@ -10,8 +10,8 @@ os:
  #- osx
 
 r:
- - 3.3
- - release
+ - 3.1
+ #- release
 
 r_packages:
   - covr

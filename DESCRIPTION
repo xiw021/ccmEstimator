@@ -15,7 +15,7 @@ Suggests:
     covr,
     testthat
 VignetteBuilder: knitr
-URL: https://github.com/xw2510/ccmEstimator
-BugReports: https://github.com/xw2510/ccmEstimator/issues
+URL: https://github.com/xiw021/ccmEstimator
+BugReports: https://github.com/xiw021/ccmEstimator/issues
 Depends: 
     R (>= 2.10)

@@ -1,6 +1,7 @@
 context("test getCCM function")
 
 test_that("whether the getCCM function gives correct output using ICAapp data",{
+  RNGkind(sample.kind = "Rejection")
   set.seed(321, kind = "Mersenne-Twister", normal.kind = "Inversion")
   data(ICAapp)
   out = getCCM('dapprp','trt1','trt2','immorp',ICAapp)
@@ -10,13 +11,11 @@ test_that("whether the getCCM function gives correct output using ICAapp data",{
   expect_equal(round(out[["ACME2"]],3),0.177)
   expect_equal(round(out[["estimand1"]],3),1.563)
   expect_equal(round(out[["estimand2"]],3),0.952)
-  expect_equal(round(out[["confidenceIntervals"]],3),structure(list(ATE1.ci = c(0.144, 0.251),
-                                                                    ATE2.ci = c(0.266,0.379),
-                                                                    ACME1.ci = c(0.076, 0.15),
-                                                                    ACME2.ci = c(0.138, 0.219),
-                                                                    estimand1.ci = c(1.183, 2.16),
-                                                                    estimand2.ci = c(0.755, 1.236)),
-                                                               row.names = c("2.5%", "97.5%"), class = "data.frame"))
+  expect_equal(round(out[["confidenceIntervals"]],3),structure(list(ATE1.ci = c(0.144, 0.251), ATE2.ci = c(0.266,
+                                                                                                           0.379), ACME1.ci = c(0.076, 0.15), ACME2.ci = c(0.138, 0.219),
+                                                                    estimand1.ci = c(1.183, 2.16), estimand2.ci = c(0.755, 1.236
+                                                                    )), row.names = c("2.5%", "97.5%"), class = "data.frame"))
+  RNGkind(sample.kind = "Rejection")
   set.seed(321, kind = "Mersenne-Twister", normal.kind = "Inversion")
   out = getCCM('nvotep','trt1','trt2','immorp',ICAapp,noInteraction = FALSE)
   expect_equal(round(out[["ATE1"]],3),0.182)
@@ -25,12 +24,10 @@ test_that("whether the getCCM function gives correct output using ICAapp data",{
   expect_equal(round(out[["ACME2"]],3),0.176)
   expect_equal(round(out[["estimand1"]],3),1.829)
   expect_equal(round(out[["estimand2"]],3),1.184)
-  expect_equal(round(out[["confidenceIntervals"]],3),structure(list(ATE1.ci = c(0.126, 0.235), ATE2.ci = c(0.225,0.337),
-                                                                    ACMET1.ci = c(0.062, 0.131),
-                                                                    ACMET2.ci = c(0.135, 0.219),
-                                                                    estimand1.ci = c(1.287, 2.581),
-                                                                    estimand2.ci = c(0.883, 1.566)),
-                                                               row.names = c("2.5%", "97.5%"), class = "data.frame"))
+  expect_equal(round(out[["confidenceIntervals"]],3),structure(list(ATE1.ci = c(0.126, 0.235), ATE2.ci = c(0.225,
+                                                                                                           0.337), ACMET1.ci = c(0.062, 0.131), ACMET2.ci = c(0.135, 0.219
+                                                                                                           ), estimand1.ci = c(1.287, 2.581), estimand2.ci = c(0.883, 1.566
+                                                                                                           )), row.names = c("2.5%", "97.5%"), class = "data.frame"))
 
 
   expect_warning(getCCM('nvotep','trt1','trt2','immorp',ICAapp), "Interactions between treatments and mediator may exist. Please consider setting noInteration as FALSE.", fixed = TRUE)
