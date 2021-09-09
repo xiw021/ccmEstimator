@@ -6,7 +6,7 @@
 #' @param T1 binary indicator for first treatment. Should be a vector if a data frame is not provided through the \code{data} argument, or the ("character") name of the variable in the data frame if provided.
 #' @param T2 binary indicator for second treatment. Should be a vector if a data frame is not provided through the \code{data} argument, or the ("character") name of the variable in the data frame if provided.
 #' @param M numeric mediator variable. Should be a vector if a data frame is not provided through the \code{data} argument, or the ("character") name of the variable in the data frame if provided.
-#' @param data an optional data frame containing the variables to be used in analysis
+#' @param data an optional data frame containing the variables to be used in analysis.
 #' @return A data frame that contains the final data to be analyzed in the \code{getCCM()} function.
 #' @note This function is called internally but may be used directly to recover final data set that can be used for analysis in the \code{getCCM()} function.
 #' @author Kirk Bansak and Xiaohan Wu
@@ -15,7 +15,6 @@
 #' @examples
 #' data(ICAapp)
 #' final.dat <- checkData(Y = "dapprp", T1 = "trt1", T2 = "trt2", M = "immorp", data = ICAapp)
-#' @references Bansak, K. (2020). Comparative causal mediation and relaxing the assumption of no mediator-outcome confounding: An application to international law and audience costs. Political Analysis, 28(2), 222-243.
 #' @export
 
 checkData <- function(Y,T1,T2,M,data = NULL){

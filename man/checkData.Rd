@@ -15,7 +15,7 @@ checkData(Y,T1,T2,M,data = NULL)
 
 \item{M}{numeric mediator variable. Should be a vector if a data frame is not provided through the \code{data} argument, or the ("character") name of the variable in the data frame if provided.}
 
-\item{data}{an optional data frame containing the variables to be used in analysis}
+\item{data}{an optional data frame containing the variables to be used in analysis.}
 }
 \value{
 A data frame that contains the final data to be analyzed in the \code{getCCM()} function.
@@ -31,8 +31,6 @@ data(ICAapp)
 final.dat <- checkData(Y = "dapprp", T1 = "trt1", T2 = "trt2", M = "immorp", data = ICAapp)
 }
 \references{
-Bansak, K. (2020). Comparative causal mediation and relaxing the assumption of no mediator-outcome confounding: An application to international law and audience costs. Political Analysis, 28(2), 222-243.
-
 Bansak, K. (2020). Comparative causal mediation and relaxing the assumption of no mediator-outcome confounding: An application to international law and audience costs. Political Analysis, 28(2), 222-243.
 }
 \author{

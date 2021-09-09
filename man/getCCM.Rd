@@ -17,7 +17,7 @@ getCCM(Y,T1,T2,M,data = NULL,
 
 \item{M}{numeric mediator variable. Should be a vector if a data frame is not provided through the \code{data} argument, or the ("character") name of the variable in the data frame if provided.}
 
-\item{data}{an optional data frame containing the variables to be used in analysis}
+\item{data}{an optional data frame containing the variables to be used in analysis.}
 
 \item{noInteraction}{logical. If \code{TRUE} (the default), the assumption of no interaction between the treatments and mediator is employed in the analysis.}
 
@@ -26,9 +26,10 @@ getCCM(Y,T1,T2,M,data = NULL,
 \item{boots}{number of bootstrap resamples taken for construction of confidence intervals.}
 }
 \value{
-A ccmEstimation object, which contains the estimates and confidence intervals for the two comparative causal mediation analysis estimands, as well as the ATE and ACME for each treatment.
-User should input the ccmEstimation object into the \code{summary()} function to view the estimation results.
+A \code{ccmEstimation} object, which contains the estimates and confidence intervals for the two comparative causal mediation analysis estimands, as well as the ATE and ACME for each treatment.
+Note, however, that the individual ACME estimates are reported only for descriptive purposes, as the comparative causal mediation analysis methods are not designed to produce unbiased or consistent estimates of the individual ACMEs (see Bansak 2020 for details). Users should consider alternative methods if interested in individual ACME estimates.
 
+User should input the \code{ccmEstimation} object into the \code{summary()} function to view the estimation results.
 Note also that the comparative causal mediation analysis results and interpretation of the results
 will be printed in the console.
 }
@@ -38,7 +39,7 @@ Function requires two separate treaments (as well as a control condition) and on
 }
 \details{
 Function will automatically assess the comparative causal mediation analysis scope conditions
-(i.e. for each comparative causal mediation estimand, a numerator and denominator that are both statistically significantly estimated and of the same sign).
+(i.e. for each comparative causal mediation estimand, a numerator and denominator that are both estimated with the desired statistical significance and of the same sign).
 Results will be returned for each comparative causal mediation estimand only if scope conditions are met for it.
 See "Scope Conditions" section in Bansak (2020) for more information.
 Results will also be returned for the ATE and ACME for each treatment.
@@ -51,7 +52,7 @@ data(ICAapp)
 set.seed(321, kind = "Mersenne-Twister", normal.kind = "Inversion")
 ccm.results <-
    getCCM(Y = "dapprp", T1 = "trt1", T2 = "trt2", M = "immorp", data = ICAapp,
-   noInteraction = TRUE, sigLevel = 0.05, boots = 10000)
+   noInteraction = TRUE, sigLevel = 0.05, boots = 1000)
 summary(ccm.results)
 }
 \references{

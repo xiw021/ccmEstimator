@@ -17,7 +17,7 @@ decideOutput(para.df,noInteraction = TRUE,
 \item{boots}{number of bootstrap resamples taken for construction of confidence intervals.}
 }
 \value{
-A list containing confidence intervals along with flags indicating the appropriate output to return to getCCM().
+A list containing confidence intervals along with flags indicating the appropriate output to return to \code{getCCM()}.
 }
 \description{
 Subsidiary function to determine appropriate output and calculate confidence intervals

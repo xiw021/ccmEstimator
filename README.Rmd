@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/xiw021/ccmEstimator/branch/master/graph/badge.svg)](https://codecov.io/gh/xiw021/ccmEstimator?branch=master)
 <!-- badges: end -->
 
-The goal of ccmEstimator is to generate comparative causal mediation estimation.
+The goal of ccmEstimator is to perform comparative causal mediation analysis to compare the mediation effects of different treatments via a common mediator. 
 
 ## Installation
 
@@ -38,5 +38,12 @@ This is a basic example which shows you how to solve a common problem:
 ```{r example}
 library(ccmEstimator)
 ## basic example code
+# load example data. ICAapp is a data frame with 14 variables. It is the application data used to illustrate comparative causal mediation analysis methods in Bansak (2020).
+data(ICAapp)
+set.seed(321, kind = "Mersenne-Twister", normal.kind = "Inversion")
+ccm.results <-
+   getCCM(Y = "dapprp", T1 = "trt1", T2 = "trt2", M = "immorp", data = ICAapp,
+   noInteraction = TRUE, sigLevel = 0.05, boots = 1000)
+summary(ccm.results)
 ```
 

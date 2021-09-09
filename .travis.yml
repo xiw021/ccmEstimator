@@ -7,7 +7,7 @@ warnings_are_errors: false
 
 os:
  - linux
- - osx
+ #- osx
 
 r:
  - 3.3
