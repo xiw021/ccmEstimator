@@ -34,7 +34,6 @@ ccm.results <-
 #> The estimated proportion mediated for treatment 2 is 0.952 times the size of that for treatment 1 
 #>    (with 95% CI: [0.755,1.236])
 #> Please use summary() to view the results in more detail.
-# summarize the results.
 summary(ccm.results)
 #> Call:
 #> getCCM(Y = "dapprp", T1 = "trt1", T2 = "trt2", M = "immorp", 
